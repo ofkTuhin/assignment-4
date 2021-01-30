@@ -37,10 +37,7 @@ nav ul li a{
 nav ul li a:hover, a.active{
     background-color: #3352F2;
     border-radius: 5px;
-    -webkit-border-radius:;
-    -moz-border-radius:;
-    -ms-border-radius:;
-    -o-border-radius:;
+    
 }
 .main-content{
     display: grid;
@@ -54,10 +51,7 @@ nav ul li a:hover, a.active{
     padding: 25px;
     border-radius: 5px;
     float: left;
-    -webkit-border-radius:;
-    -moz-border-radius:;
-    -ms-border-radius:;
-    -o-border-radius:;
+    
 }
 .booking-form h3{
     margin: 10px 0px;
@@ -67,11 +61,11 @@ nav ul li a:hover, a.active{
 }
 .f-class{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 .inp-width{
-    min-width: 300px;
+    min-width:100px;
 }
 .plus-minus-btn{
     color: #3352F2;
@@ -96,10 +90,7 @@ nav ul li a:hover, a.active{
     background: #F3F5FF;
     border-radius: 4px;
     margin: 10px 0;
-    -webkit-border-radius:;
-    -moz-border-radius:;
-    -ms-border-radius:;
-    -o-border-radius:;
+    
 }
 .booking-form .inputs{
     display: grid;
@@ -127,10 +118,7 @@ nav ul li a:hover, a.active{
     color: #fff;
     font-weight: 500;
     background-color:  #3352F2;
-    -webkit-border-radius:;
-    -moz-border-radius:;
-    -ms-border-radius:;
-    -o-border-radius:;
+    
 }
 .amount{
     display: flex;

@@ -54,17 +54,28 @@
                     <input class="inp-style inp-width" type="number" name="" id="firstClassInput" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><span id="addBtn">+</span> <span id="reduceBtn">-</span> </p>
+                    <p><span onclick="TicketCart('first',true)">+</span> <span onclick=" TicketCart('first',false)">-</span> </p>
+                </div>
+                <div>
+                    <label for="">class total</label>
+                    <input class="inp-style inp-width" type="number" name="" id="Firstclasstotal" value="0">
+                   
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="" id="economyInput">
+                    <input class="inp-style inp-width" type="text" name="" id="economyClassInput" value="0" >
+                   
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span id="addBtn">+</span> <span id="reduceBtn">-</span> </p>
+                   <p> <span onclick="TicketCart('economy',true)">+</span> <span onclick="TicketCart('economy',false)">-</span> </p>
+                </div>
+                <div>
+                    <label for="">class total</label>
+                    <input class="inp-style inp-width" type="number" name="" id="Economyclasstotal" >
+                   
                 </div>
             </div>
             <div class="calculations">
@@ -91,7 +102,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$ <span id="total">550</span></p>
+                        <p>$<span id="total"></span></p>
                     </div>
                 </div>
             </div>
@@ -107,49 +118,71 @@
 
 
     <script>
-        const addBtn=document.getElementById('addBtn')
-        const addBtnEvent=addBtn.addEventListener('click',function(){
-           const firstClassInput=document.getElementById('firstClassInput');
-          const firstClassInputNumber=parseFloat(firstClassInput.value)
-          const totalAdd=firstClassInputNumber+1
-          firstClassInput.value=totalAdd;
-          var subtotal=document.getElementById('subtotal')
+       
+       
 
-          subtotal.innerText= firstClassInput.value*150;
+        function TicketCart(ticket,addCart)
+        {
+            const inputAdd=document.getElementById(ticket+'ClassInput')
+           const inputNumber=parseFloat(inputAdd.value)
+          let totalInput=inputNumber;
+           if(addCart==true)
+           {
+           totalInput=inputNumber+1;
+           }
+           if(addCart==false && totalInput>0)
+           {
+             totalInput=inputNumber-1;
+           }
+           inputAdd.value=totalInput;
+           const newInput=inputAdd.value
          
-         document.getElementById('vat').innerText=( subtotal.innerText*10)/100;
-          
-           
-           
-          
-          
-        })
-        const reduceBtn=document.getElementById('reduceBtn')
-        const reduceBtnevent=reduceBtn.addEventListener('click',function(){
-            const firstClassInput=document.getElementById('firstClassInput')
-            const firstClassInputNumber=parseFloat(firstClassInput.value)
-            const totalReduce=firstClassInputNumber-1;
-            if(totalReduce<0)
-            {
-                firstClassInput.value==0;
-                subtotal.innerText='';
-                vat.innerText='';
+           if(ticket=='first')
+           {
+
+            var firstClassTotal=document.getElementById('Firstclasstotal')
+
+            firstClassTotal.value=newInput*150;
+
+           }
+           else{
+             var economyAmount=document.getElementById('Economyclasstotal')
+             economyAmount.value=newInput*100;
+           }
                
-            }
-            
-          else{
-            firstClassInput.value=totalReduce;
-            var subtotal=document.getElementById('subtotal')
-            subtotal.innerText=totalReduce*150;
-          
-            const vat=document.getElementById('vat')
-            vat.innerText=vat.innerText-15
-          }
-        })
+           totalCalculation();
+     
+        }
 
+        function totalCalculation(){
+         const economyClassInput=document.getElementById('economyClassInput')
+         
+         const economyClassOutput=parseFloat(economyClassInput.value)
+         
+         
+        const firstClassInput=document.getElementById('firstClassInput')
+        
+         const firstClassOutput=parseFloat(firstClassInput.value)
+         
+
+
+         var subtotal=firstClassOutput*150+economyClassOutput*100;
+
+
+         document.getElementById('subtotal').innerText=subtotal;
+         const subtotalNumber=document.getElementById('subtotal').innerText
+         const subtotalAmount=parseFloat(subtotalNumber)
+
+         const tax=subtotal*0.1
+         document.getElementById('vat').innerText=tax;
+
+         const taxNumber= document.getElementById('vat').innerText
+         const totalTax=parseFloat(taxNumber)
+
+
+         document.getElementById('total').innerText=totalTax+subtotalAmount
+        }
+ 
     </script>
-
-   
 </body>
-
 </html>
